@@ -22,11 +22,14 @@ public class SingleLinkedListDemo {
         singleLinkedlist.addByOrder(hero4);
         singleLinkedlist.addByOrder(hero2);
         singleLinkedlist.addByOrder(hero3);
-        singleLinkedlist.addByOrder(hero1);
+//        singleLinkedlist.addByOrder(hero1);
 
         //修改名字
-        HeroNode newheroNode = new HeroNode(2, "卢", "西澳");
-        singleLinkedlist.update(newheroNode);
+//        HeroNode newheroNode = new HeroNode(2, "卢", "西澳");
+//        singleLinkedlist.update(newheroNode);
+
+        //删除节点
+        singleLinkedlist.del(3);
 
         //显示
         singleLinkedlist.list();
@@ -129,6 +132,32 @@ class SingleLinkedlist{
             System.out.println("没有找到");
         }
     }
+
+    //根据编号删除节点
+    public void del(int no){
+        HeroNode temp = head;
+        boolean flag = false;
+
+        while(true){
+            if(temp.next == null){
+                    break;
+            }
+            if(temp.next.no ==no){
+                flag =true;
+                break;
+            }
+            temp = temp.next;
+        }
+
+        if(flag){
+            //删除
+            temp.next =temp.next.next;
+        }else {
+            System.out.printf("要删除的节点不存在%d\n",no);
+        }
+
+    }
+
 
 
 }
